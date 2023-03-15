@@ -38,6 +38,8 @@ public class Portal : MonoBehaviour
         Fader f = fader.Result.GetComponent<Fader>();
 
         yield return new WaitForSeconds(f._fadeTime);
+
+        GameObject.FindWithTag(Constants.TAG_SAVING).GetComponent<SavingWrapper>().Save();
         
         
         if (IsLoadFirstScene)
@@ -51,9 +53,11 @@ public class Portal : MonoBehaviour
         }
 
         fader.Result.GetComponent<Fader>().FadeOut();
+        GameObject.FindWithTag(Constants.TAG_SAVING).GetComponent<SavingWrapper>().Load();
         
 
         UpdatePlayerBySpawnPoint();
+        GameObject.FindWithTag(Constants.TAG_SAVING).GetComponent<SavingWrapper>().Save();
         Destroy(gameObject);
     }
 

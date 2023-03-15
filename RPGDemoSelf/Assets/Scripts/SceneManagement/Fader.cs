@@ -2,6 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.ResourceManagement.ResourceProviders;
+using UnityEngine.SceneManagement;
 
 namespace RPG.SceneManagement
 {
@@ -47,6 +51,44 @@ namespace RPG.SceneManagement
                 _grp.alpha = Mathf.Lerp(0, 1, time / t);
             }
         }
+
+        public static void FadeImmediate()
+        {
+            
+        }
+
+
+        // private static IEnumerator LoadScene2()
+        // {
+        //     AsyncOperationHandle<GameObject> fader =  Addressables.InstantiateAsync(SceneFader);
+        //     yield return fader;
+        //
+        //     Fader f = fader.Result.GetComponent<Fader>();
+        //
+        //     yield return new WaitForSeconds(f._fadeTime);
+        //
+        //     GameObject.FindWithTag(Constants.TAG_SAVING).GetComponent<SavingWrapper>().Save();
+        //
+        //
+        //     if (IsLoadFirstScene)
+        //     {
+        //         yield return SceneManager.LoadSceneAsync(0);
+        //     }
+        //     else
+        //     {
+        //         AsyncOperationHandle<SceneInstance> op = Addressables.LoadSceneAsync(LocationScene2Load);
+        //         yield return op;
+        //     }
+        //
+        //     fader.Result.GetComponent<Fader>().FadeOut();
+        //     GameObject.FindWithTag(Constants.TAG_SAVING).GetComponent<SavingWrapper>().Load();
+        //
+        //
+        //     UpdatePlayerBySpawnPoint();
+        //     GameObject.FindWithTag(Constants.TAG_SAVING).GetComponent<SavingWrapper>().Save();
+        //     Destroy(gameObject);
+        // }
+
     }
 
     

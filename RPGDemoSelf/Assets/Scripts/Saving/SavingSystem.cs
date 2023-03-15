@@ -5,6 +5,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.SceneManagement;
 
 namespace RPG.Saving
@@ -15,11 +16,26 @@ namespace RPG.Saving
         {
             Dictionary<string, object> state = LoadFile(saveFile);
             int buildIndex = SceneManager.GetActiveScene().buildIndex;
+            int lastSceneIndex = -1;
+            print("lastSceneBuildIndex" +state["lastSceneBuildIndex"]);
             if (state.ContainsKey("lastSceneBuildIndex"))
             {
-                buildIndex = (int)state["lastSceneBuildIndex"];
+                string last = state["lastSceneBuildIndex"].ToString();
+                if (int.TryParse(last, out lastSceneIndex))
+                {
+                    buildIndex = lastSceneIndex;
+                }
             }
-            yield return SceneManager.LoadSceneAsync(buildIndex);
+
+            if (buildIndex != SceneManager.GetActiveScene().buildIndex && buildIndex >= 0)
+            {
+                yield return SceneManager.LoadSceneAsync(buildIndex);
+            }
+            else
+            {
+                yield return Addressables.LoadSceneAsync(state["lastSceneBuildIndex"].ToString());
+            }
+
             RestoreState(state);
         }
 
@@ -72,7 +88,15 @@ namespace RPG.Saving
                 state[saveable.GetUniqueIdentifier()] = saveable.CaptureState();
             }
 
-            state["lastSceneBuildIndex"] = SceneManager.GetActiveScene().buildIndex;
+            if (SceneManager.GetActiveScene().buildIndex == -1)
+            {
+                print("lastSceneBuildIndex" +SceneManager.GetActiveScene().path);
+                state["lastSceneBuildIndex"] = SceneManager.GetActiveScene().path;
+            }
+            else
+            {
+                state["lastSceneBuildIndex"] = SceneManager.GetActiveScene().buildIndex;
+            }
         }
 
         private void RestoreState(Dictionary<string, object> state)

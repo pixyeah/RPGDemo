@@ -6,6 +6,11 @@ using UnityEngine;
 public class SavingWrapper : MonoBehaviour
 {
 
+    IEnumerator Start()
+    {
+        yield return GetComponent<SavingSystem>().LoadLastScene(Constants.DEFAULT_SAVE_FILE);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -21,13 +26,13 @@ public class SavingWrapper : MonoBehaviour
         
     }
 
-    private void Load()
+    public void Load()
     {
         GetComponent<SavingSystem>().Load(Constants.DEFAULT_SAVE_FILE);
         
     }
 
-    private void Save()
+    public void Save()
     {
         GetComponent<SavingSystem>().Save(Constants.DEFAULT_SAVE_FILE);
         

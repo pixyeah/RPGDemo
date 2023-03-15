@@ -9,6 +9,7 @@ public class Constants
     public const string ANIMATION_PARA_CHAR_STOPATTACK = "stopatk";
 
     public const string TAG_PLAYER = "Player";
+    public const string TAG_SAVING = "Saving";
 
     public const string DEFAULT_SAVE_FILE = "save";
 }

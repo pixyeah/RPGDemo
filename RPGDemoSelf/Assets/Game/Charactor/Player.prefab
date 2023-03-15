@@ -1169,6 +1169,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3909589109400947298, guid: 96c6a1251b354a44e88efd464ffe401c, type: 3}
+      propertyPath: uniqueIdentifier
+      value: player
+      objectReference: {fileID: 0}
     - target: {fileID: 5820240585064472914, guid: 96c6a1251b354a44e88efd464ffe401c, type: 3}
       propertyPath: _weaponRange
       value: 2

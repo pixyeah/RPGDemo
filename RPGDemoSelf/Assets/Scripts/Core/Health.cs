@@ -1,10 +1,11 @@
 using System;
+using RPG.Saving;
 using Unity.VisualScripting;
 using UnityEngine;
 
 namespace RPG.Core
 {
-    public class Health : MonoBehaviour
+    public class Health : MonoBehaviour,ISaveable
     {
         [SerializeField] private float healthPoints = 100f;
 
@@ -43,6 +44,20 @@ namespace RPG.Core
             GetComponent<ActionScheduler>().CancelCurAction();
             
             _dieAction?.Invoke();
+        }
+
+        public object CaptureState()
+        {
+            return healthPoints;
+        }
+
+        public void RestoreState(object state)
+        {
+            healthPoints = (float)state;
+            if (healthPoints <= 0)
+            {
+                Die();
+            }
         }
     }
 
