@@ -1,23 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-namespace RPG.Core
+public class ActionScheduler : MonoBehaviour
 {
-    public class ActionScheduler : MonoBehaviour
+    private IAction _curAction;
+    public void StartAction(IAction action)
     {
-        IAction _curAction;
-
-        public void StartAction(IAction action)
+        if (_curAction != null && _curAction != action)
         {
-            if (_curAction == action) return;
-            if (_curAction != null)
-            {
-                print($"Start {action},Canceling {_curAction}");
-                //_curAction.Cancel();
-            }
-            _curAction = action;
+            _curAction .Cancel();
         }
+        _curAction = action;
+    }
 
+    public void Stop()
+    {
+        if (_curAction != null)
+        {
+            _curAction .Cancel();
+        }
+    }
+
+    public void CancelCurAction()
+    {
+        StartAction(null);
     }
 }

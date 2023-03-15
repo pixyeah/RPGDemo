@@ -1,71 +1,85 @@
 using RPG.Combat;
-using RPG.Movement;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Animations;
+using RPG.Core;
+using RPG.Move;
 using UnityEngine;
-using UnityEngine.AI;
 
 namespace RPG.Control
 {
     public class PlayerController : MonoBehaviour
     {
+        private Mover _mover;
+        private Camera _mainCamera = null;
+        private Fighter _fighter = null;
+        private Health _health;
+
+
+        public void Awake()
+        {
+            _mover = GetComponent<Mover>();
+            _mainCamera = Camera.main;
+            _fighter = GetComponent<Fighter>();
+            _health = GetComponent<Health>();
+        }
+
+        private Ray GetMouseRay()
+        {
+            return _mainCamera.ScreenPointToRay(Input.mousePosition);
+        }
+
         void Update()
         {
-
-            MouseInteract();
+            if (_health.IsDead()) return;
+            if(InteractWithCombat()) return;
+            if (InteractWithMovement()) return;
         }
 
-        private void MouseInteract()
+        private void PickPlayMouseClick()
         {
-            Ray lastHitRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (CombatInteract(lastHitRay))
-            {
-                return;
-            }
-            if (MovementInteract(lastHitRay))
-            {
-                return;
-            }
-            //print("nothing to do");
+            
         }
 
-        private bool CombatInteract(Ray ray)
+        private bool InteractWithMovement()
         {
-            RaycastHit[] hits = Physics.RaycastAll(ray);
-            foreach (var h in hits)
+            if (Physics.Raycast(GetMouseRay(), out var hit))
             {
-                if (h.transform.CompareTag("Enemy"))
+                if (Input.GetMouseButton(0))
                 {
-                    if (Input.GetMouseButtonDown(1))
+                    _mover.StartMoveAction(hit.point,1f);
+                    // if (hit.collider.CompareTag("Terrain"))
+                    // {
+                    // }
+                }
+
+                return true;
+            }
+
+            return false;
+        }
+
+        private bool InteractWithCombat()
+        {
+            RaycastHit[] hits = new RaycastHit[5];
+            int size = Physics.RaycastNonAlloc(GetMouseRay(), hits);
+            for (int i = 0; i < size; i++)
+            {
+                //待优化
+                if (hits[i].transform.TryGetComponent( out CombatTarget target))
+                {
+                    if(target == null || !target.GetComponent<Fighter>().CanAttack(target.gameObject))
+                        continue;
+                    
+                    if (Input.GetMouseButtonDown(0))
                     {
-                        CombatTarget cbTar = h.transform.GetComponent<CombatTarget>();
-                        if (cbTar != null)
-                        {
-                            GetComponent<Fighter>()?.Attack(cbTar);
-                        }
+                        transform.LookAt(target.transform);
+                        _fighter.Attack(target.gameObject);
                     }
+
                     return true;
                 }
             }
-            return false;
-        }
 
-        private bool MovementInteract(Ray ray)
-        {
-            RaycastHit lastHitRayCast;
-            if (Physics.Raycast(ray, out lastHitRayCast))
-            {
-                if (Input.GetMouseButton(1))
-                {
-                    GetComponent<Mover>().MoveTo(lastHitRayCast.point);
-                }
-                return true;
-            }
             return false;
         }
     }
-
 
 }

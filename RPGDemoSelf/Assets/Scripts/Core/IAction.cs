@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-public interface IAction 
+public interface IAction
 {
     void Cancel();
 }

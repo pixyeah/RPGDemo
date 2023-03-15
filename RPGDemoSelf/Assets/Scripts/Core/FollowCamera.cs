@@ -6,11 +6,12 @@ namespace RPG.Core
 {
     public class FollowCamera : MonoBehaviour
     {
-        [SerializeField] private Transform _traTarget = null;
-
-        private void LateUpdate()
+        [SerializeField] private Transform _target = null;
+    
+        void LateUpdate()
         {
-            transform.position = _traTarget.position;
+            transform.position = _target.position;
         }
     }
+
 }
