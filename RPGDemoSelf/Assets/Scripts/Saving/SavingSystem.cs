@@ -17,7 +17,6 @@ namespace RPG.Saving
             Dictionary<string, object> state = LoadFile(saveFile);
             int buildIndex = SceneManager.GetActiveScene().buildIndex;
             int lastSceneIndex = -1;
-            print("lastSceneBuildIndex" +state["lastSceneBuildIndex"]);
             if (state.ContainsKey("lastSceneBuildIndex"))
             {
                 string last = state["lastSceneBuildIndex"].ToString();
@@ -25,16 +24,20 @@ namespace RPG.Saving
                 {
                     buildIndex = lastSceneIndex;
                 }
+                
+                
+                if (buildIndex != SceneManager.GetActiveScene().buildIndex && buildIndex >= 0)
+                {
+                    yield return SceneManager.LoadSceneAsync(buildIndex);
+                }
+                else
+                {
+                    yield return Addressables.LoadSceneAsync(state["lastSceneBuildIndex"].ToString());
+                }
+                
+                
             }
 
-            if (buildIndex != SceneManager.GetActiveScene().buildIndex && buildIndex >= 0)
-            {
-                yield return SceneManager.LoadSceneAsync(buildIndex);
-            }
-            else
-            {
-                yield return Addressables.LoadSceneAsync(state["lastSceneBuildIndex"].ToString());
-            }
 
             RestoreState(state);
         }

@@ -1161,6 +1161,16 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 435482, guid: 679ff741e12a7e740819ede24a7000b7, type: 3}
   m_PrefabInstance: {fileID: 1051428400137929098}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1051428400138070118 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 403948, guid: 679ff741e12a7e740819ede24a7000b7, type: 3}
+  m_PrefabInstance: {fileID: 1051428400137929098}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1051428400138127374 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 461188, guid: 679ff741e12a7e740819ede24a7000b7, type: 3}
+  m_PrefabInstance: {fileID: 1051428400137929098}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5266384364410416420
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1182,7 +1192,51 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5820240585064472914, guid: 96c6a1251b354a44e88efd464ffe401c, type: 3}
+      propertyPath: _traWeaponHolder
+      value: 
+      objectReference: {fileID: 1051428400138127374}
+    - target: {fileID: 5820240585064472914, guid: 96c6a1251b354a44e88efd464ffe401c, type: 3}
       propertyPath: _timeBetweenAttacks
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5820240585064472914, guid: 96c6a1251b354a44e88efd464ffe401c, type: 3}
+      propertyPath: _weapon.m_AssetGUID
+      value: badc87bb637b695438dec7120e09bade
+      objectReference: {fileID: 0}
+    - target: {fileID: 5820240585064472914, guid: 96c6a1251b354a44e88efd464ffe401c, type: 3}
+      propertyPath: _traWeaponLeftHolder
+      value: 
+      objectReference: {fileID: 1051428400138070118}
+    - target: {fileID: 5820240585064472914, guid: 96c6a1251b354a44e88efd464ffe401c, type: 3}
+      propertyPath: _traWeaponRightHolder
+      value: 
+      objectReference: {fileID: 1051428400138127374}
+    - target: {fileID: 5820240585064472914, guid: 96c6a1251b354a44e88efd464ffe401c, type: 3}
+      propertyPath: _weaponRef.m_AssetGUID
+      value: badc87bb637b695438dec7120e09bade
+      objectReference: {fileID: 0}
+    - target: {fileID: 5820240585064472914, guid: 96c6a1251b354a44e88efd464ffe401c, type: 3}
+      propertyPath: _prefabSword.m_AssetGUID
+      value: 70fb2451d931f1d409de1cb04c134a73
+      objectReference: {fileID: 0}
+    - target: {fileID: 5820240585064472914, guid: 96c6a1251b354a44e88efd464ffe401c, type: 3}
+      propertyPath: _weapon.m_EditorAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5820240585064472914, guid: 96c6a1251b354a44e88efd464ffe401c, type: 3}
+      propertyPath: _weaponRef.m_EditorAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5820240585064472914, guid: 96c6a1251b354a44e88efd464ffe401c, type: 3}
+      propertyPath: _prefabSword.m_EditorAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5820240585064472914, guid: 96c6a1251b354a44e88efd464ffe401c, type: 3}
+      propertyPath: _swordOverrideController.m_AssetGUID
+      value: 812aac6e2390a3f4cbc8fbb9cc4217e5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5820240585064472914, guid: 96c6a1251b354a44e88efd464ffe401c, type: 3}
+      propertyPath: _swordOverrideController.m_EditorAssetChanged
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5820240586360280593, guid: 96c6a1251b354a44e88efd464ffe401c, type: 3}
@@ -1195,7 +1249,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5820240586360526953, guid: 96c6a1251b354a44e88efd464ffe401c, type: 3}
       propertyPath: m_RootOrder
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5820240586360526953, guid: 96c6a1251b354a44e88efd464ffe401c, type: 3}
       propertyPath: m_LocalPosition.x

@@ -27,6 +27,46 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 70fb2451d931f1d409de1cb04c134a73
+    m_Address: Assets/Game/Weapons/EquipedSword.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 812aac6e2390a3f4cbc8fbb9cc4217e5
+    m_Address: Assets/Game/Weapons/Sword/SwordOverrideController.overrideController
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: badc87bb637b695438dec7120e09bade
+    m_Address: Assets/Game/Weapons/Sword/Sword.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9fc0d4010bbf28b4594072e72b8655ab
+    m_Address: Assets/Scenes/Sandbox.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0ca3dd1c6f243e346bed69f8808296d8
+    m_Address: Assets/Game/Weapons/Unarmed/Unarmed.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9d11216c9ef97db4c9b5e9b5db1f8e46
+    m_Address: Assets/Game/Weapons/Bow/EquipedBow.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 82a401c81ada8424eb752c8c7e188799
+    m_Address: Assets/Game/Weapons/Bow/BowAnimatorOverrider.overrideController
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fa2ef32c3438e6c4d9f2461959631d2d
+    m_Address: Assets/Game/Weapons/Bow/Bow.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: bdef57f7ce339b5408937696df22a239, type: 2}
   m_SchemaSet:
